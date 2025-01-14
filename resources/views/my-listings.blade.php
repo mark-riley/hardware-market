@@ -36,7 +36,7 @@
 
                     <tbody>
                         @foreach($data as $listing)
-                            <tr style="height: 25vh">
+                            <tr class="listing" style="height: 25vh" onclick="window.location='/listing/{{$listing->id}}'">
                                 <td style="position: relative;">
                                     <!-- <a href="/listing/{{$listing->id}}">{{$listing->id}}</a> -->
 

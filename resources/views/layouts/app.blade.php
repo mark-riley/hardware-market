@@ -60,6 +60,12 @@
         background: #ff5700;
         color: white;
         }
+
+
+        .listing:hover {
+            background:rgb(221, 221, 221);
+            cursor: pointer;
+        }
     </style>
 
 </head>
