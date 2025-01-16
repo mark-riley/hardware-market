@@ -17,7 +17,14 @@ class ListingController extends Controller
         // return view('listings', compact('data'));
 
         $data = Listing::paginate(10);
-        $images = Media::get()->all();
+
+        $images = array();
+        foreach ($data as $listing) {
+            $images[] =  Media::where('listingID', $listing->id)->get()->all();
+        }
+
+        // $images = Media::get()->all();
+
         return view('listings', compact('data', 'images'));
     }
 

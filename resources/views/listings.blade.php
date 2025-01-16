@@ -44,13 +44,15 @@
                                     @php
                                         $imageCount = 0;
                                     @endphp
-                                    @foreach ($images as $image)
-                                        @if (($image->listingID == $listing->id) && ($imageCount < 1))
-                                            @php
-                                                $imageCount = $imageCount + 1;
-                                            @endphp
-                                            <a href="/listing/{{$listing->id}}"><img src="{{asset('/images/'.$image->filePath)}}" style="position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); max-height: 25vh; max-width: 25vh; height: auto; width: auto"></a>
-                                        @endif
+                                    @foreach ($images as $listingImageArray)
+                                        @foreach ($listingImageArray as $image)
+                                            @if (($image->listingID == $listing->id) && ($imageCount < 1))
+                                                @php
+                                                    $imageCount = $imageCount + 1;
+                                                @endphp
+                                                <a href="/listing/{{$listing->id}}"><img src="{{asset('/images/'.$image->filePath)}}" style="position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); max-height: 25vh; max-width: 25vh; height: auto; width: auto"></a>
+                                            @endif
+                                        @endforeach
                                     @endforeach
                                     @if ($imageCount == 0)
                                         <a href="/listing/{{$listing->id}}"><img src="{{asset('/images/noImageUploaded.png')}}" style="position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); max-height: 25vh; max-width: 25vh; height: auto; width: auto"></a>
